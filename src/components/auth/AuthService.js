@@ -18,6 +18,25 @@ export default class AuthService {
             })
         }).then(res => {
             this.setToken(res.token) // Setting the token in localStorage
+            localStorage.setItem('id_user', res.id )
+            return Promise.resolve(res);
+        })
+    }
+
+    addBook(title, author, isbn, rating, userId) {
+        // Get a token from api server using the fetch api
+        return this.fetch(`${this.domain}/books/listing`, {
+            method: 'POST',
+            body: JSON.stringify({
+                title,
+                author,
+                isbn,
+                rating,
+                userId
+            })
+        }).then(res => {
+            this.setToken(res.token) // Setting the token in localStorage
+            localStorage.setItem('id_user', res.id )
             return Promise.resolve(res);
         })
     }
