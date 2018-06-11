@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import withAuth from '../auth/WithAuth';
 import AuthService from '../auth/AuthService';
+import StarRatingComponent from 'react-star-rating-component';
 
 
 class Dashboard extends Component {
@@ -21,12 +22,17 @@ class Dashboard extends Component {
     return (
       <div className="App">
         {this.state.books.map(book =>
-          <ul key={book.id}>
-            <li>{book.title}</li> 
-            <li>{book.ISBN}</li> 
-            <li>{book.author}</li> 
-            <li>{book.rating}</li>
-          </ul>
+          <div key={book.id}>
+            <div>{book.title}</div> 
+            <div>{book.ISBN}</div> 
+            <div>{book.author}</div> 
+            <StarRatingComponent 
+              name="rate2" 
+              editing={false}
+              starCount={5}
+              value={book.rating}
+            />
+          </div>
         )}      
       </div>
     );
