@@ -59,6 +59,20 @@ export default class AuthService {
         })
     }
 
+    addReview(textReview, rating, bookId, userId){
+        return this.fetch(`${this.domain}/reviews/listing`, {
+            method: 'POST',
+            body: JSON.stringify({
+                textReview,
+                rating,
+                bookId,
+                userId
+            })
+        }).then(res => {
+            return Promise.resolve(res);
+        })
+    }
+
     addBook(title, author, isbn, rating, userId) {
         // Get a token from api server using the fetch api
         return this.fetch(`${this.domain}/books/listing`, {
