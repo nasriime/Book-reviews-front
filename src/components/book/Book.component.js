@@ -64,7 +64,7 @@ class Book extends Component {
             <Header history={this.props.history} name={this.props.user.user.userName}/>
             <div className="container" style={{marginTop: '20px'}}>
                 <div className="row">
-                        <div className="col-sm-3">
+                        <div className="col-sm-6 col-md-4">
                             <div className="card bg-secondary text-white">
                                 <div className="card-header">{book.title}</div>
                                 <div className="card-body">

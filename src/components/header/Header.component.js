@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Header.css';
 import AuthService from '../auth/AuthService';
 const Auth = new AuthService();
 
