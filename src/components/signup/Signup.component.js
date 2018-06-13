@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './Signup.css';
 import AuthService from '../auth/AuthService';
 
 
@@ -37,32 +36,32 @@ handleChange(e){
 render() {
   return (
     <div className="center">
-              <div className="card">
-                  <h1>Sign up</h1>
-                  <form onSubmit={this.formSubmit}>
-                      <input
-                          className="form-item"
-                          placeholder="Username"
-                          name="username"
-                          type="text"
-                          onChange={this.handleChange}
-                      />
-                      <input
-                          className="form-item"
-                          placeholder="Password"
-                          name="password"
-                          type="password"
-                          onChange={this.handleChange}
-                      />
-                      <input
-                          className="form-submit"
-                          value="Rigester"
-                          type="submit"
-                      />
-                  </form>
-              </div>
-              <p>Already have an account ? <Link to={'/login'}>login</Link></p>
-          </div>
+        <div className="card">
+            <h1>Sign up</h1>
+            <form onSubmit={this.formSubmit}>
+                <input
+                    className="form-item"
+                    placeholder="Username"
+                    name="username"
+                    type="text"
+                    onChange={this.handleChange}
+                />
+                <input
+                    className="form-item"
+                    placeholder="Password"
+                    name="password"
+                    type="password"
+                    onChange={this.handleChange}
+                />
+                <input
+                    className="form-submit"
+                    value="Rigester"
+                    type="submit"
+                />
+            </form>
+        </div>
+        <p>Already have an account ? <Link to={'/login'}>login</Link></p>
+    </div>
   );
 }
 

@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
 }
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
-
+a{
+  text-decoration: none;
+}
 .card-header{
   min-height: 65px;
 }
@@ -13,9 +16,65 @@ body {
   color:#fff;
   padding: 1.8rem !important;
   background-color: #6c757d!important;
-  margin-bottom: 30px;
+  margin-top: 0 !important;
+  margin-bottom: 30px !important;
 }
-
 .btn-primary {
   background-color: #6c757d!important;
+  border: none !important;
+}
+.center{
+  background-color: #1abc9c;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.card{
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 150px;
+}
+.card + p{
+  text-align: center;
+}
+.card > form{
+  display: flex;
+  flex-direction: column;
+}
+.card h1{
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.form-item{
+  font-family: 'Raleway', sans-serif;
+  padding: 5px;
+  margin-bottom: 2rem;
+  height: 30px;
+  width: 100%;
+  border: 1px solid grey;
+  border-radius: 3px;
+}
+.form-submit{
+  font-family: 'Raleway', sans-serif;
+  height: 35px;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+}
+.form-submit:hover{
+ opacity: 0.6;
+}
+
+
+@media(max-width:500px){
+  .card{
+    margin:150px 10px 0;
+  }
 }

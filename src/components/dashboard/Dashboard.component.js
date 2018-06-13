@@ -126,8 +126,8 @@ handleChange(e){
 
             <div className="row">
               { books.map(book =>
-                <Link to={`/book/${ book._id }`}>
-                  <div className="col-sm-3">
+                <div className="col-sm-6 col-md-3">
+                  <Link to={`/book/${ book._id }`}>
                     <div className="card bg-secondary text-white" key={book._id}>
                       <div className="card-header">{book.title}</div>
                       <div className="card-body">
@@ -143,8 +143,8 @@ handleChange(e){
                         />
                       </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
               )} 
             </div> 
         </div>
