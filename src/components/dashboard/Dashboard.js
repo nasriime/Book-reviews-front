@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import withAuth from '../auth/WithAuth';
 import AuthService from '../auth/AuthService';
 import StarRatingComponent from 'react-star-rating-component';
@@ -13,8 +14,7 @@ class Dashboard extends Component {
       title:'',
       author: '',
       isbn : 1,
-      rating : 1,
-      user: localStorage.getItem('id_user')
+      rating : 1
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -32,7 +32,7 @@ class Dashboard extends Component {
 
 handleFormSubmit(e){
     e.preventDefault();
-    this.Auth.addBook(this.state.title,this.state.author, this.state.isbn, this.state.rating, this.state.user)
+    this.Auth.addBook(this.state.title,this.state.author, this.state.isbn, this.state.rating, this.props.user.user._id)
         .then(res =>{
           this.setState({
             books: [...this.state.books, res],
@@ -123,23 +123,25 @@ handleChange(e){
 
           <div className="row">
             { books.map(book =>
-              <div className="col-sm-3">
-                <div className="card bg-secondary text-white" key={book._id}>
-                  <div className="card-header">{book.title}</div>
-                  <div className="card-body">
-                    <p className="card-text">ISBN : {book.ISBN}.</p>
-                    <p className="card-text">Author : {book.author}</p>
-                  </div> 
-                  <div className="card-footer clearfix"><i className="pull-left">rating : </i>
-                    <StarRatingComponent 
-                      name="rate2" 
-                      editing={false}
-                      starCount={5}
-                      value={book.rating}
-                    />
+              <Link to={`/book/${ book._id }`}>
+                <div className="col-sm-3">
+                  <div className="card bg-secondary text-white" key={book._id}>
+                    <div className="card-header">{book.title}</div>
+                    <div className="card-body">
+                      <p className="card-text">ISBN : {book.ISBN}.</p>
+                      <p className="card-text">Author : {book.author}</p>
+                    </div> 
+                    <div className="card-footer clearfix"><i className="pull-left">rating : </i>
+                      <StarRatingComponent 
+                        name="rate2" 
+                        editing={false}
+                        starCount={5}
+                        value={book.rating}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             )} 
           </div>
           

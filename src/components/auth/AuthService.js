@@ -8,6 +8,18 @@ export default class AuthService {
         this.getProfile = this.getProfile.bind(this)
     }
 
+    signup(username, password) {
+        return this.fetch(`${this.domain}/users/signup`, {
+            method: 'POST',
+            body: JSON.stringify({
+                username,
+                password
+            })
+        }).then(res => {
+            return Promise.resolve(res);
+        })
+    }
+
     login(username, password) {
         // Get a token from api server using the fetch api
         return this.fetch(`${this.domain}/users/login`, {
@@ -20,6 +32,30 @@ export default class AuthService {
             this.setToken(res.token) // Setting the token in localStorage
             localStorage.setItem('id_user', res.id )
             return Promise.resolve(res);
+        })
+    }
+
+    getBooks() {
+        return this.fetch(`${this.domain}/books/listing`, {
+            method: 'GET'
+        }).then(res => {
+            return Promise.resolve(res);
+        })
+    }
+
+    getBook(bookId){
+        return this.fetch(`${this.domain}/books/listing/${bookId}`,{
+            method:'GET'
+        }).then(res => {
+            return Promise.resolve(res)
+        })
+    }
+
+    getBookReviews(bookId){
+        return this.fetch(`${this.domain}/reviews/listing?bookId=${bookId}`,{
+            method:'GET'
+        }).then(res =>{
+            return Promise.resolve(res)
         })
     }
 
@@ -37,26 +73,6 @@ export default class AuthService {
         }).then(res => {
             this.setToken(res.token) // Setting the token in localStorage
             localStorage.setItem('id_user', res.id )
-            return Promise.resolve(res);
-        })
-    }
-
-    signup(username, password) {
-        return this.fetch(`${this.domain}/users/signup`, {
-            method: 'POST',
-            body: JSON.stringify({
-                username,
-                password
-            })
-        }).then(res => {
-            return Promise.resolve(res);
-        })
-    }
-
-    getBooks() {
-        return this.fetch(`${this.domain}/books/listing`, {
-            method: 'GET'
-        }).then(res => {
             return Promise.resolve(res);
         })
     }
@@ -100,7 +116,6 @@ export default class AuthService {
         // Using jwt-decode npm package to decode the token
         return decode(this.getToken());
     }
-
 
     fetch(url, options) {
         // performs api calls sending the required authentication headers
